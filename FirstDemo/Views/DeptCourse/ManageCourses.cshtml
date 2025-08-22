@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+
+    var dept = ViewBag.crsInDept as Department;
+    SelectList crsInDeptItems = new SelectList(dept.Courses, "CrsId", "CrsName");
+    var crsNotInDept = ViewBag.crsNotInDept as List<Course>;
+    SelectList crsNotInDeptItems = new SelectList(crsNotInDept, "CrsId", "CrsName");
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/site.css" rel="stylesheet" />
+    <title>ManageCourses</title>
+</head>
+<body>
+    <div class="container mt-3">
+        <div class="alert-dark d-flex justify-content-center fs-2 mb-2 fw-bold">
+            Department: '@dept.DeptName'
+        </div>
+        <form id="manage-form" method="post">
+            <label class="form-label fs-3 fw-bold">Remove Courses</label>
+            <select class="form-select mb-2"  multiple asp-items="crsInDeptItems" name="CrsToRemove">
+
+            </select>
+            <label class="form-label fs-3 fw-bold">Add Courses</label>
+            <select class="form-select" multiple asp-items="crsNotInDeptItems" name="CrsToAdd">
+
+            </select>
+            
+        </form>
+        <a id="manage-btn" class="btn btn-outline-primary mt-2">Change</a>
+    </div>
+    <script src="/js/site.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Course>
+@{
+    Layout = "_Layout1";
+    ViewBag.Title = "Courses";
+    var index = 1;
+    var prise = 200;
+    var watch = 570;
+    
+}
+
+
+<div class="courses-page">
+   
+    @foreach(var crs in Model)
+    {
+        
+        <div class="course">
+            <div class="cover">
+                <img src="~/layout/images/course-0@(index).jpg" alt="image">
+            </div>
+            <div class="padding">
+                @foreach(var item in crs.Instructors)
+                {
+                    <img class="man" src="@item.ImageUrl" alt="image">
+                   
+                }
+                
+                <div class="bodey">
+                    <h3>@crs.CrsName</h3>
+                    <p>@crs.Description</p>
+                </div>
+                <a asp-action="details" asp-controller="course" asp-route-id="@crs.CrsId"><i class="fa-solid fa-circle-info m-1"></i>Course Info</a>
+                <div class="info">
+                    <div class="left">
+                        <i class="fa-regular fa-user"></i>
+                        @(watch + 120)
+                    </div>
+                    <div class="right">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                        @(prise + 50)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        index++;
+    }
+
+ </div>

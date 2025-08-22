@@ -1,0 +1,33 @@
+﻿@model Department
+@{
+    Layout = "_Layout2";
+    ViewBag.Title = "Edit";
+}
+
+
+    <div class="container mt-5">
+        <h2 class="create">Edit Department</h2>
+        <form id="formEdite" method="post">
+                       
+                <input asp-for="DeptId" hidden />
+   
+            <div class="mb-3">
+                <label asp-for="DeptName" class="form-label">Department Name</label>
+                <input asp-for="DeptName" class="form-control" value="@Model.DeptName" />
+            </div>
+          
+            <div class="mb-3">
+                <label asp-for="DateOfCreation" class="form-label"></label>
+                <input asp-for="DateOfCreation" class="form-control" value="@Model.DateOfCreation.ToShortDateString()" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="IsActive" class="form-label"></label>
+                <input asp-for="IsActive" class="form-check" value="@Model.IsActive"   />
+            </div>
+           
+           
+        </form>
+        <input type="submit" class="btn btn-outline-warning" id="deletebtn" value="Save" />
+        <a class="btn btn-secondary" asp-action="index">Back</a>
+       </div>
+   

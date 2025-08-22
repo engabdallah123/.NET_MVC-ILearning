@@ -1,0 +1,35 @@
+﻿@model Department
+@{
+    Layout = "_Layout2";
+    ViewBag.Title = "Create";
+}
+
+
+    <div class="container mt-5 boxing">
+        <h2 class="create">Create Department</h2>
+        <div class="alert text-danger" asp-validation-summary="All"></div>
+        <form method="post" >
+            <div class="mb-3">
+                <label asp-for="DeptId" class="form-label">Department ID</label>
+                <input asp-for="DeptId" class="form-control"   />
+                <span asp-validation-for="DeptId"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="DeptName" class="form-label">Department Name</label>
+                 <input asp-for="DeptName"  class="form-control"  />
+            </div>
+           
+            <div class="mb-3">
+                <label asp-for="DateOfCreation" class="form-label"></label>
+                <input asp-for="DateOfCreation" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="IsActive" class="form-label"></label>
+                <input asp-for="IsActive" class="form-check" />
+            </div>
+                <button type="submit" class="btn btn-primary mb-3 " href="/Department/Index">Add</button>
+        </form>
+       
+        <a href="/Department/Index" class="btn btn-secondary">Back to List</a>
+    </div>
+    

@@ -1,0 +1,54 @@
+﻿@model Course
+@{
+    Layout = "_layout1";
+    ViewBag.Title = "Details";
+    var depts = ViewBag.depts;
+    var instructors = ViewBag.instructors;
+}
+
+<div class="task">
+    <h2>@Model.CrsName</h2>
+    <div class="box box1">
+        <div class="text">
+            <span>Description:</span>
+            <p>@Model.Description</p>
+        </div>
+    </div>
+    <div class="box">
+       
+            <span>Duration:</span>
+            <p class="text-danger">@Model.Duration Hours</p>
+       
+    </div>
+    <div class="box">
+        
+            <span>In Department:</span>
+            <ul class="d-flex">
+                @foreach (var dept in ViewBag.depts)
+                {
+                    <li class="m-2">
+                        <a asp-action="Details" asp-controller="Department" asp-route-id="@dept.DeptId">
+                            @dept.DeptName
+                        </a>
+                    </li>
+                }
+            </ul>
+       
+    </div>
+    <div class="box not-bord ">
+        
+            <span>Instructor:</span>
+            <ul class="d-flex">
+                @foreach(var inst in instructors)
+                {
+                    <li class="m-2">
+                       
+                        <img src="@inst.ImageUrl" />
+                        <p>@inst.Name</p>
+                    </li>
+                }
+            </ul>
+ 
+    </div>
+    <a asp-action="index" asp-controller="course" class="btn btn-outline-secondary">Back</a>
+</div>

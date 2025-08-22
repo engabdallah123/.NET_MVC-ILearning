@@ -1,0 +1,59 @@
+﻿@using FirstDemo.ViewModel
+@model RegisterViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/layout/style.css">
+    <link href="/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Slab:wght@100..900&family=Work+Sans&display=swap"
+          rel="stylesheet" />
+    <title>Register</title>
+</head>
+<body>
+    <div class="discount" id="discount">
+        <div class="formation">
+            <div class="content">
+                <h2>Register</h2>
+                <form method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <input class="input" type="text" placeholder="Your Name" asp-for="FullName" />
+                    <span asp-validation-for="FullName"></span>
+                    <input class="input" type="email" placeholder="Your Email" asp-for="Email" />
+                    <span asp-validation-for="Email"></span>
+                    <input class="input" type="password" placeholder="Your Password" asp-for="Password" />
+                    <span asp-validation-for="Password"></span>
+                    <input class="input" type="password" placeholder="Confirm Your Password" asp-for="ConfirmPassword" />
+                    <span asp-validation-for="ConfirmPassword"></span>
+                    <input class="input" type="text" placeholder="Your Address" asp-for="Address" />
+                    <span asp-validation-for="Address"></span>
+                    <input class="input" type="number" placeholder="Your Phone Number" asp-for="PhoneNumber" />
+                    <span asp-validation-for="PhoneNumber"></span>
+                    <input class="input" type="date" placeholder="Your Date Of Birth" asp-for="DateOfBirth" />
+                    <span asp-validation-for="DateOfBirth"></span>
+                    <div class="upload-box">
+                        <input type="file" accept="image/*" id="fileUpload" asp-for="PhotoFile">
+                        <span asp-validation-for="PhotoFile"></span>
+                        <label for="fileUpload">📤 Click to upload Photo</label>
+                    </div>
+                    <p class="ihave">
+                        <a asp-action="login" asp-controller="acount" class="text-decoration-none fw-bold mt-3">I have account! Login</a>
+                    </p>
+                    <input type="submit" class="signup" value="Sign up">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

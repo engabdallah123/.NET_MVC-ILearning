@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_layout1";
+}
+
+<div id="wave" class=" text-center position-relative">
+    <h1 class="animated-text">Welcome to ILearning</h1>
+    <p class="typing-text">Please Log In To View The Content</p>
+</div>
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    .animated-text {
+        font-size: 3rem;
+        color: #666;
+        animation: fadeInUp 2s ease-in-out infinite alternate;
+    }
+
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0.3;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(-10px);
+        }
+    }
+
+    .typing-text {
+        font-size: 30px;
+        color: #666;
+        width:490px;
+        font-weight:bold;
+        margin:40px auto;
+        border-right: 2px solid #666;
+        overflow:hidden;
+        white-space:nowrap;
+        z-index:2;
+        animation: typing 3s steps(34) 2s both,blink-caret 0.5s infinite;
+     
+    }
+
+    #wave {
+        position: relative;
+        
+    }
+
+    #wave::before {
+        content: "";
+        position: fixed;
+        background-color: blue;
+        width: 300%;
+        height: 100%;
+        top: 35%;
+        left: 50%;
+        margin-top: 100px;
+        border-radius: 50%;
+        animation: waving 6s ease-in-out infinite alternate;
+    }
+    /* الكتابة + المسح */
+    @@keyframes typing {
+    
+     from {
+         width:0;
+     }
+     to {
+         width:490px;
+     }
+    
+    }
+       
+  
+    @@keyframes blink-caret {
+    from {
+            border-right-color: #000000c7;
+    }
+    to {
+            border-right-color:transparent;
+    }
+  }
+    @@keyframes waving {
+        from {
+
+        transform: translateX(-50%) skew(0,-10deg);
+       }
+
+    to {
+        transform: translateX(-30%) skew(10deg,0);
+    }
+
+    }
+</style>

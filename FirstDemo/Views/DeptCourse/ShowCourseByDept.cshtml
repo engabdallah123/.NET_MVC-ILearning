@@ -1,0 +1,42 @@
+﻿@model Department
+@{
+    Layout = "_Layout1";
+    ViewBag.Title = "Courses-Department";
+}
+
+
+    <div class="container mt-3">
+    <div class=" d-flex justify-content-center fs-2 mb-2 fw-bold" style="background-color: #808080ba;padding: 15px;border-radius: 7px;outline: 1px solid;">
+            Department: '@Model.DeptName'
+        </div>
+          <table class="table ">
+            <thead>
+                <tr>
+                    <td scope="col" class="fw-bold fs-2 text-secondary">Name</td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td scope="col" class="fw-bold fs-2 text-secondary">Update Degrees</td>
+                }
+                
+                    <td scope="col" class="fw-bold fs-2 text-secondary">Show Degrees</td>
+                </tr>
+            </thead>
+        <tbody class="table-group-divider">
+                @foreach(var item in Model.Courses)
+                {
+                    <tr>
+                        <td class="fs-5">@item.CrsName</td>
+                      @if (User.IsInRole("Admin"))
+                        {
+                        <td> <a  class="btn btn-outline-primary" asp-action="UpdateStudentDegree" asp-controller="StuCourse" asp-route-deptId="@Model.DeptId" asp-route-crsId="@item.CrsId">Degree</a></td>
+                         }
+                         <td>
+                           <a class="btn btn-outline-primary" asp-action="ShowStudentDegree" asp-controller="StuCourse" asp-route-deptId="@Model.DeptId" asp-route-crsId="@item.CrsId">Degree</a>
+                        </td>
+                    </tr>
+     
+                }
+            </tbody>
+          </table>
+    </div>
+

@@ -1,0 +1,61 @@
+﻿@model Department
+@{
+    Layout = "_Layout1";
+    ViewBag.Title = "Details";
+    var instructors = ViewBag.Instructors;
+    var students = ViewBag.Students;
+    var Courses = ViewBag.Courses;
+}
+
+    <div class="details">
+        <h2 class="text-success fw-bold">About `@Model.DeptName`</h2>
+        <div class="line">
+            Id: <span>@Model.DeptId</span>
+        </div>
+        <div class="line">
+            Name: <span >@Model.DeptName</span>
+        </div>
+        <div class="line">
+            Capacity: <span>@students.Count Students</span>
+        </div>
+        <div class="line">
+            Date Of Creation: <span>@Model.DateOfCreation.ToShortDateString()</span>
+        </div>
+        <div class="line d-flex justify-content-between">
+            Students: <ul class=" d-flex">
+            @foreach(var stu in students)
+            {
+                <li class="stus">
+                    <img src="@stu.ImageUrl" style="width:60px;" />
+                    <p>@stu.Name</p>
+                </li>
+            }
+                </ul>
+        </div>
+        <div class="line d-flex justify-content-between">
+        Instructors: <ul class="d-flex">
+            @foreach(var ins in instructors)
+            {
+                <li class="stus">
+                    <img src="@ins.ImageUrl" style="width:60px" />
+                    <p>@ins.Name</p>
+                </li>
+            }
+        </ul>
+        </div>
+        <div class="crss line">
+            Courses: <ul class="d-flex">
+            @foreach(var Crs in Courses)
+            {
+                <li class="crs">
+                    @Crs.CrsName
+                </li>
+            }
+        </ul>
+        </div>
+        <div class="line">
+            Active: <span>@Model.IsActive</span>
+        </div>
+        <a asp-action="Index" class="btn btn-outline-success">Back</a>
+    </div>
+

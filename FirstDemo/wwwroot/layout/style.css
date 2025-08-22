@@ -1,0 +1,152 @@
+/* start global rules */
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+body {
+  font-family: "Work Sans", sans-serif;
+   background: linear-gradient(135deg, #ffffff, #dbeafe);
+}
+html {
+  scroll-behavior: smooth;
+}
+:root {
+  --main-color: #2196f3;
+  --alt-color: #1787e0;
+  --section-background: #ececec;
+  --main-box-shadow: 0 0 10px #ddd;
+  --main-tranzition: 0.3s;
+  --main-padding-top: 100px;
+  --main-padding-bottom: 100px;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+.continer {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* small */
+@media (min-width: 768px) {
+  .continer {
+    width: 750px;
+  }
+}
+/* medium */
+@media (min-width: 992px) {
+  .continer {
+    width: 970px;
+  }
+}
+/* larg */
+@media (min-width: 1200px) {
+  .continer {
+    width: 1170px;
+  }
+}
+/* start discount */
+.discount {
+  min-height: 100vh;
+}
+@media (max-width: 991px) {
+  .discount .image {
+    flex-basis: 100%;
+  }
+}
+.discount .content {
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  width: 500px;
+      box-shadow: 0 0 8px #ddd;
+      margin-top:30px;
+}
+.discount .content h2 {
+  font-size: 32px;
+  letter-spacing: -1px;
+  margin-bottom: 39px;
+}
+.discount .content p {
+  line-height: 1.6;
+  max-width: 500px;
+  margin-top:10px
+}
+@media (max-width: 991px) {
+  .discount .content p {
+    max-width: 100%;
+  }
+}
+.discount .content img {
+  width: 300px;
+  max-width: 100%;
+}
+.discount .formation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 50%;
+}
+@media (max-width: 991px) {
+  .discount .formation {
+    flex-basis: 100%;
+  }
+}
+.discount .formation .input {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: none;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+  caret-color: var(--main-color);
+}
+.discount .formation .input:focus {
+  outline: none;
+}
+.discount .formation .text {
+  resize: none;
+  height: 200px;
+}
+.discount .formation .signup {
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    padding: 13px;
+    border: none;
+    background-color: var(--main-color);
+    color: white;
+    transition: var(--main-tranzition);
+    cursor: pointer;
+}
+.discount .formation button:hover {
+  background-color: var(--alt-color);
+}
+.upload-box {
+  border: 2px dashed #6c63ff;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.upload-box:hover {
+  background-color: #f5f4ff;
+}
+.upload-box input[type="file"] {
+  display: none;
+}
+.upload-box label {
+  font-weight: bold;
+  color: #6c63ff;
+  cursor: pointer;
+}
+/* end discount */

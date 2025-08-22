@@ -1,0 +1,24 @@
+﻿@using FirstDemo.ViewModel
+@model ExamResultViewModel
+@{
+    Layout = "_Layout2";
+}
+
+<div class="container mt-5 boxing">
+    <h2 class="create">Result for @Model.ExamName</h2>
+    <p>Your Score: @Model.Score / @Model.FullMark</p>
+
+    @if (Model.Score == Model.FullMark)
+    {
+        <p class="text-success">🎉 Excellent! You answered all the questions correctly..</p>
+    }
+    else if (Model.Score >= Model.FullMark / 2)
+    {
+        <p class="text-warning">🙂 Good performance.</p>
+    }
+    else
+    {
+        <p class="text-danger">😔 Need more review</p>
+    }
+    <a asp-action="index" asp-controller="department" class="btn btn-outline-success mt-2">Back</a>
+</div>

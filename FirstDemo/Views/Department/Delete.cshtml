@@ -1,0 +1,71 @@
+﻿@model Department
+
+@{
+    Layout = "_Layout1";
+    ViewBag.Title = "Delete";
+    var instructors = ViewBag.Instructors;
+    var students = ViewBag.Students;
+    var Courses = ViewBag.Courses;
+}
+
+
+<div class="details">
+        <div class="warn">
+        <h2>Are You Sure For Deleting The <strong>`@Model.DeptName`</strong> Department !!</h2>
+        <form id="formBtnDelete" method="post">
+            <input asp-for="DeptId" hidden />
+            <a id="delete-btn" class="btn btn-danger">Sure Delete</a>
+            <a asp-action="Index" class="btn btn-secondary">Back</a>
+        </form>
+        </div>
+       
+        <div class="line">
+            Id: <span class="txt fw-bold">@Model.DeptId</span>
+        </div>
+        <div class="line">
+        Name: <span class="txt fw-bold">@Model.DeptName</span>
+        </div>
+        <div class="line">
+        Capacity: <span class="txt fw-bold">@students.Count Students</span>
+        </div>
+        <div class="line">
+        Date Of Creation: <span class="txt fw-bold">@Model.DateOfCreation.ToShortDateString()</span>
+        </div>
+    <div class="line d-flex justify-content-between">
+        Students: <ul class=" d-flex">
+            @foreach (var stu in students)
+            {
+                <li class="stus">
+                    <img src="@stu.ImageUrl" style="width:60px;" />
+                    <p>@stu.Name</p>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="line d-flex justify-content-between">
+        Instructors: <ul class="d-flex">
+            @foreach (var ins in instructors)
+            {
+                <li class="stus">
+                    <img src="@ins.ImageUrl" style="width:60px" />
+                    <p>@ins.Name</p>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="crss line">
+        Courses: <ul class="d-flex">
+            @foreach (var Crs in Courses)
+            {
+                <li class="crs">
+                    @Crs.CrsName
+                </li>
+            }
+        </ul>
+    </div>
+        <div class="line">
+        Active: <span class="txt">@Model.IsActive</span>
+        </div>
+
+    </div>
+ 

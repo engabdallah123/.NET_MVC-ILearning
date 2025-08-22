@@ -1,0 +1,38 @@
+﻿@model Department
+@{
+    Layout = "_Layout2";
+    ViewBag.Title = "Degrees";
+    var selectedCrs = ViewBag.selectedCrs as Course;
+    var degreeStu = ViewBag.Degree as List<StudentCourse>;
+}
+
+
+<div class="container mt-4">
+    <div class="text-center text-capitalize fs-2 fw-bold">'@selectedCrs.CrsName' (Of 100%)</div>
+
+    <form id="degree-post" method="post">
+        @foreach (var stu in Model.Students)
+        {
+            @if (Model?.Students != null && Model.Students.Any())
+            {
+                var currentDegree = degreeStu?
+                .FirstOrDefault(d => d.StuId == stu.Id && d.CrsId == selectedCrs?.CrsId)?.Degree;
+                <div class="content">
+                    <div class="box">
+                        <label for="stu">@stu.Name</label>
+                       <span class="show-degree">@currentDegree</span>
+                    </div>
+                </div>
+
+
+            }
+            else
+            {
+                <div class="alert-danger fs-2">No Student In This Department</div>
+            }
+
+        }
+        <a asp-action="ShowCourseByDept" asp-controller="DeptCourse" asp-route-id="@Model.DeptId" class="btn btn-outline-secondary">Back</a>
+    </form>
+
+</div>

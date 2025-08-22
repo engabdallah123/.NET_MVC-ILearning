@@ -1,0 +1,26 @@
+﻿@model Exame
+@{
+    Layout = "_Layout2";
+    ViewBag.Title = "Show Exam";
+    SelectList selects = new SelectList(ViewBag.Courses, "CrsId", "CrsName");
+ 
+}
+
+<div class="container mt-5 boxing">
+    <h2 class="create">Choose Course to Start Exam</h2>
+    <div class="alert text-danger" asp-validation-summary="All"></div>
+
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="CrsId" class="form-label">Course</label>
+            <select asp-for="CrsId" asp-items="selects" class="form-select">
+                <option>Select Course</option>
+            </select>
+        </div>
+        <input type="submit" class="btn btn-primary mb-2" value="Start Exam" />
+    </form>
+
+    <a asp-action="index" asp-controller="Department" class="btn btn-outline-secondary">Back</a>
+
+   
+</div>

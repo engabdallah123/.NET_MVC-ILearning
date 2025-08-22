@@ -1,0 +1,46 @@
+﻿@model Instructor
+@{
+    Layout = "_Layout2";
+    ViewBag.Title = "Edit";
+    SelectList selects = new SelectList(ViewBag.Depts, "DeptId", "DeptName");
+}
+
+
+<div class="container mt-5 boxing">
+    <h2 class="create">Edit Student</h2>
+    <div class="alert text-danger" asp-validation-summary="All"></div>
+    <form id="edit-stu" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Name</label>
+            <input type="text" asp-for="Name" class="form-control" value="@Model.Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input type="email" asp-for="Email" class="form-control" value="@Model.Email" />
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhotoFile" class="form-label">Upload Image</label>
+            <input type="file" accept="image/*" asp-for="PhotoFile" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Gender" class="form-label"></label> <br />
+            @foreach (var gender in Enum.GetValues(typeof(Gender)))
+            {
+                <input class="m1" type="radio" asp-for="Gender" value="@gender" />
+                <label>@gender</label>
+            }
+        </div>
+        <div class="mb-3">
+            <label asp-for="DeptNo" class="form-label">Department</label>
+            <select asp-for="DeptNo" asp-items="selects" class="form-select">
+                <option>@Model.Department.DeptName</option>
+            </select>
+        </div>
+
+    </form>
+
+    <a class="btn btn-success mb-1" id="edit-btn">Update</a> <br />
+    <a asp-action="index" asp-controller="student" class="btn btn-outline-secondary">Back</a>
+</div>

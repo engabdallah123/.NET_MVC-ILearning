@@ -1,0 +1,34 @@
+﻿@model Student
+@{
+    Layout = "_Layout1";
+
+}
+
+
+    <div class="details">
+        <h2>Student</h2>
+    <div class="warn">
+        <h2>Are You Sure For Deleting  <strong>`@Model.Name`</strong> !!</h2>
+    </div>
+        <div class="line">
+            Id: <span >@Model.Id</span>
+        </div>
+        <div class="line">
+            Name: <span >@Model.Name</span>
+        </div>
+        <div class="line">
+            Email: <span >@Model.Email</span>
+        </div>
+        <div class="line">
+            Gender: <span >@Model.Gender</span>
+        </div>
+        <div class="line">
+            Department: <span >@Model.Department.DeptName</span>
+        </div>
+        <form id="formBtnDelete" method="post">
+            <input asp-for="Id" hidden />
+            <a id="delete-btn" class="btn btn-danger">Sure Delete</a>
+        </form>
+        <a asp-action="Index" class="btn btn-outline-secondary">Back</a>
+    </div>
+

@@ -1,0 +1,29 @@
+﻿@using FirstDemo.ViewModel
+@model RoleViewModel
+@{
+    Layout = "_Layout2";
+    ViewBag.Title = "Add Role";
+}
+
+<div class="container mt-5 boxing">
+    <h2 class="create">Add Role</h2>
+    <div class="alert text-danger" asp-validation-summary="All"></div>
+    <form id="add-role" method="post">
+        
+        <div class="mb-3">
+            <label asp-for="RoleName" class="form-label"></label>
+            <select asp-for="RoleName" class="form-select">
+                <optgroup label="Add Role">
+                    <option selected>Admin</option>
+                    <option selected>Instructor</option>
+                    <option selected>Student</option>
+                </optgroup>
+                
+            </select>
+        </div>
+
+    </form>
+
+    <a class="btn btn-success mb-1" id="btn-role">Add</a> <br />
+    <a asp-action="index" asp-controller="department" class="btn btn-outline-secondary">Back</a>
+</div>

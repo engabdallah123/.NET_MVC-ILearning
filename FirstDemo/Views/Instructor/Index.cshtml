@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Instructor>
+@{
+    Layout = "_Layout1";
+    ViewBag.Title = "Instructros";
+}
+
+<div class="mt-5 p-3">
+    <div class="d-flex mb-2">
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="create" asp-controller="instructor" class="btn btn-primary mb-1">Create Instructor</a>
+        }
+       
+    </div>
+
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col" class="fs-2">#</th>
+                <th scope="col" class="fs-2">ID</th>
+                <th scope="col" class="fs-2">Name</th>
+                <th scope="col" class="fs-2">Email</th>
+                <th scope="col" class="fs-2">Gender</th>
+                <th scope="col" class="fs-2">Dept Name</th>
+                <th scope="col" class="fs-2">Profile</th>
+                @if(User.IsInRole("Admin"))
+                {
+                    <th scope="col" class="fs-2">Actions</th>
+                }
+               
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            @if (Model.Count() == 0)
+            {
+                <tr>
+                    <td colspan="6" class="fs-4">No Data Founded</td>
+                </tr>
+            }
+            else
+            {
+                var index = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row" class="text-success">@(index++)</th>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Email</td>
+                        <td>@item.Gender</td>
+                        <td>@(item.Department != null ? item.Department.DeptName : "No Department")</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.ImageUrl))
+                            {
+                                <img src="@item.ImageUrl" alt="Missing!" style="width:64px" />
+                            }
+                            else
+                            {
+                                <span>Image Not Found</span>
+                            }
+
+                        </td>
+                        <td>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a class="btn btn-danger delete-btn" asp-action="delete" asp-controller="instructor" asp-route-id="@item.Id"><i class="fa-solid fa-trash m-1"></i>Delete</a>
+                                <a class="btn btn-warning delete-btn text-light" asp-action="edit" asp-controller="instructor" asp-route-id="@item.Id"><i class="fa-solid fa-pen-to-square m-1"></i>Edit</a>
+                            }
+
+                        </td>
+
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

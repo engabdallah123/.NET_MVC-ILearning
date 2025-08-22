@@ -1,0 +1,41 @@
+﻿@model Question
+@{
+    Layout = "_Layout2";
+    ViewBag.Title = "Add Question";
+    var exam = ViewBag.Exame;
+}
+@if (TempData["QuestionAddMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show object-fit-contain" role="alert" style="width: fit-content;
+        margin: 10px auto;">
+        @TempData["QuestionAddMessage"]
+    </div>
+}
+<div class="container mt-5 boxing">
+    <h2 class="create">Add Question for `@exam.ExameName`</h2>
+    <div class="alert text-danger" asp-validation-summary="All"></div>
+    <form method="post">
+        <input type="hidden" asp-for="ExameId" />
+
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">Question</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <h4>Add Options</h4>
+        @for (int i = 0; i < Model.Options.Count; i++)
+        {
+            <div class="mb-3">
+                <label>Option @(i + 1)</label>
+                <input asp-for="Options[@i].Tilte" class="form-control" />
+                <input type="checkbox" asp-for="Options[@i].IsCorrect" /> Correct
+            </div>
+        }
+
+        <input type="submit" class="btn btn-primary mb-2" value="Save Question" />
+
+    </form>
+
+    <a asp-action="index" asp-controller="Department" class="btn btn-outline-secondary">Finish Adding</a>
+</div>

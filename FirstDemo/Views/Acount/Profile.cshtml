@@ -1,0 +1,140 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@{
+    Layout = "_Layout1";
+    ViewBag.Title = "Profile";
+    @inject UserManager<ApplicationUser> userManager
+    
+    var user2 = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.StreetAddress);
+}
+
+<div class="profile-page">
+    <!-- start information box -->
+    <div class="information">
+        <div class="about">
+            @if (User.Identity != null && User.Identity.IsAuthenticated == true)
+            {
+                var user = await userManager.GetUserAsync(User);
+                <a asp-action="profile" asp-controller="acount">
+                    <img src="@user.ImageUrl" alt="">
+
+                </a>
+            }
+            
+            <h2>@User.Identity.Name</h2>
+            <p>Level 20</p>
+            <div class="progress">
+                <span style="width: 60%;"></span>
+            </div>
+            <div class="rate">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <span class="rate-num">550 Rating</span>
+        </div>
+        <div class="data">
+            <div class="info-box">
+                <h3>General Information</h3>
+                <div class="name">
+                    <p>Full Name <span>@User.Identity.Name</span></p>
+
+                </div>
+                <div class="gender">
+                    <p>Address:<span>@(user2.Value ?? "No Address")</span></p>
+                </div>
+                <div class="country">
+                    <p>Country:<span>Egypt</span></p>
+                </div>
+                <div class="edit-toggle">
+                    <label>
+                        <input class="lable-check " type="checkbox" checked>
+                        <div class="toggle"></div>
+                    </label>
+                </div>
+            </div>
+            <div class="info-box">
+                <h3>Personal Information</h3>
+                <div class="name">
+                    @if (User.Identity != null && User.Identity.IsAuthenticated)
+                    {
+                        var user = await userManager.GetUserAsync(User);
+                        <p>Email:<span>@user.Email</span></p>
+                    }
+
+                </div>
+                <div class="gender">
+                    @if (User.Identity != null && User.Identity.IsAuthenticated)
+                    {
+                        var user = await userManager.GetUserAsync(User);
+                        <p>Phone:<span>@user.PhoneNumber</span></p>
+                    }
+                   
+                </div>
+                <div class="country">
+                    @if (User.Identity != null && User.Identity.IsAuthenticated)
+                    {
+                        var user = await userManager.GetUserAsync(User);
+                        <p>Date Of Birth:<span>@user.DateOfBirth.ToShortDateString()</span></p>
+                    }
+                </div>
+                <div class="edit-toggle">
+                    <label>
+                        <input class="lable-check " type="checkbox">
+                        <div class="toggle"></div>
+                    </label>
+                </div>
+            </div>  
+    
+    <!-- end information box -->       
+</div>
+</div>
+    <!-- start general info -->
+    <div class="general-info">
+        <h2>General Info</h2>
+        <h4>General Information About Your Account</h4>   
+        <div class="email">
+            @if (User.Identity != null && User.Identity.IsAuthenticated)
+            {
+                var user = await userManager.GetUserAsync(User);
+                <label for="email"> Email</label>
+                <input type="email" id="email" value="@user.Email" disabled>
+               <button type="submit">Change</button>
+            }
+            
+        </div>
+    </div>
+    <!-- end general info -->
+    <!-- start security info -->
+    <div class="security">
+        <h2>Security Info</h2>
+        <h4>Security Information About Your Account</h4>
+        <div>
+            <div class="text">
+                <span>Password</span>
+                <p>Last Change On 25/10/2024</p>
+            </div>
+            <a asp-action="ChangePass" asp-controller="acount"><input type="reset" value="Change"></a>
+        </div>
+        <div>
+            <div class="text">
+                <span>Two-Factor Authentication</span>
+                <p>Enable/Disable The Feature</p>
+            </div>
+            <label>
+                <input class="lable-check " type="checkbox" checked>
+                <div class="toggle"></div>
+            </label>
+        </div>
+        <div>
+            <div class="text">
+                <span>Devices</span>
+                <p>Check The Login Devices List</p>
+            </div>
+            <input type="submit" value="Devices">
+        </div>
+    </div>
+    <!-- end security info -->
+</div>

@@ -1,0 +1,38 @@
+﻿@model Exame
+@{
+    Layout = "_Layout2";
+    ViewBag.Title = "Create Exam";
+    SelectList selects = new SelectList(ViewBag.Courses, "CrsId", "CrsName");
+}
+<div class="container mt-5 boxing">
+    <h2 class="create">Create Exam</h2>
+    <div class="alert text-danger" asp-validation-summary="All"></div>
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="CrsId" class="form-label">Exam Name</label>
+            <select asp-for="CrsId" asp-items="selects" class="form-select">
+                <option>Select Course</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Duration" class="form-label">Duration</label>
+            <input type="number" asp-for="Duration" class="form-control" />
+            <span asp-validation-for="Duration"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ExameDate" class="form-label">Date Of Exam</label>
+            <input type="date" asp-for="ExameDate" class="form-control" />
+            <span asp-validation-for="ExameDate"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="FullMark" class="form-label">Full Mark</label>
+            <input type="number" asp-for="FullMark" class="form-control" />
+            <span asp-validation-for="FullMark"></span>
+        </div>
+
+        <input type="submit" class="btn btn-primary mb-2" value="Add Questions" />
+
+    </form>
+
+    <a asp-action="index" asp-controller="Department" class="btn btn-outline-secondary">Back</a>
+</div>
