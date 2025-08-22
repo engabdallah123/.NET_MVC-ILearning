@@ -39,5 +39,6 @@ It provides an interactive platform for students and instructors to manage cours
 👨‍💻 Author
 
 Developed with ❤️ by Abdallah Ebrahim
-🔗 LinkedIn
- | GitHub
+## 🔗 Connect with Me
+- [LinkedIn](https://www.linkedin.com/in/abdallah-ebrahim-5038272b6)
+- [GitHub](https://github.com/engabdallah123)
